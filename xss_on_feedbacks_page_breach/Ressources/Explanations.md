@@ -40,6 +40,14 @@ We insert the more complex XSS attempt in both inputs
 
 There we go, on the page reload the feedback name is interpreted as `html` and executes the `onerror` code, that leads to displaying an alert modal.
 
+Resulting in:
+```html
+<td>
+    Name : 
+    <img src="a" onerror="alert(&quot;XSS&quot;)">
+</td>
+```
+
 But... no flag is returned by the server.
 
 After a lot of attempts, it turns out that we just have to fill one of the input with `script` for the server to returns the flag.
