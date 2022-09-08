@@ -4,10 +4,11 @@ While trying to exploit a security breach on the `http://IP/index.php?page=uploa
 
 After testing a huge file size upload to make the server crash etc. We've found out that the server looks like only allowing the upload of `.jpg` files.
 
-When an upload ends successfully the uploaded file path is shown on the screen as following:
+When everything goes well, the server stores the file using the same filename as sent and displays the created image path on the page.
 
+Example after submitting a `filename.jpg` image:
 ```txt
-/tmp/filename.jpg succesfully uploaded.
+/tmp/filename.jpg successfully uploaded.
 ```
 
 Lets try out few things.
@@ -28,6 +29,6 @@ Results in:
 <pre>
     /tmp/
     <img src="a" onerror="console.log(alert('XSS'))">
-    .jpg succesfully uploaded.
+    .jpg successfully uploaded.
 </pre>
 ```
