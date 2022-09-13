@@ -1,5 +1,7 @@
 # Image Search Engine SQL injection
 
+## How we found the breach
+
 Before reading this breach explanations please have a look to this breach before:
 
 [SQL injection on members table explanations →](../../sql_injection_members_table/Ressources/Explanations.md)
@@ -29,7 +31,7 @@ Surname : comment
 - title
 - comment
 
-## UNION SELECT and CONCAT SQL injection
+### UNION SELECT and CONCAT SQL injection
 
 We will then retrieve all the table's entries with all their fields.
 
@@ -59,17 +61,25 @@ Url : 1
 
 We can see that the last image contains a hash to handle `1928e8083cf461a51303633093573c46`.
 
-### Retrieving the flag
+#### Retrieving the flag
 
 Via md5 decrypt of `1928e8083cf461a51303633093573c46` containted in the `comment` list_images table column that leads to `albatroz`.
 
 Hashing using sha256 the `albatroz` results in `f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188` which is our flag.
 
-## Solution
+## How to exploit the breach
+
+Having a SQL injection breach can lead to be leaking the whole database entries, involving users' personal information, emails, password, etc. 
+
+But not only about stealing data, a hacker could even insert entries in a specific table, for example to add credits to his account. A hacker could even delete all the entries of a table – let's hope you made regular backups of your database.
+
+## How to avoid this breach
 
 A solution to avoid this kind of breach would be to escape received image id using either your native database escaping tools or manually.
 
-An other solution would be to use an ORM that will natively prevent sql injections.
+An other solution would be to use an ORM that will natively prevent SQL injections.
+
+You could also define restricted accesses to the connection to the database: restricted access to only a few tables, no deletion permission, no reading permission for critical tables, etc.
 
 ### Php Example
 
