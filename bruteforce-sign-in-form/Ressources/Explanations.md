@@ -1,7 +1,14 @@
 # Sign in form Bruteforce
 
+## How we found the breach
+
 On the page `http://IP/?page=signin` we can find the sign in form, it takes a username and a password.
-After hacking into the server databse we found several user's usernames in database.
+
+After hacking into the server database we found several user's usernames in database.
+
+To see how we've scanned the data please look at:
+
+[SQL injection on members table explanations →](../../sql_injection_members_table/Ressources/Explanations.md)
 
 ```js
 // Only surname
@@ -11,9 +18,10 @@ After hacking into the server databse we found several user's usernames in datab
 ```
 
 Also after scanning the whole database we did not found any password columns in any tables.
-This is why we went for the bruteforce option, event more when there's not visible protection about it after several attempts.
 
-## The Bruteforce script
+This is why we went for the bruteforce option, even more when there's not visible protection about it after several attempts.
+
+### The Bruteforce script
 
 We will use the following password and usernames dataset for the form inputs value:
 
@@ -26,7 +34,7 @@ We will then hit the endpoint below with all the possibilites until the server r
 `http://IP/?page=signin&username=${username}&password=${password}&Login=Login#`
 ```
 
-### The main logic
+#### The main logic
 
 ```js
   await Promise.all(usernameCollection.map(async username => {
@@ -59,9 +67,9 @@ We will then hit the endpoint below with all the possibilites until the server r
 ```
 
 After running the script, it leads to a successful attempt for all the concurent users on the 95th password: `shadow`.
-Indeed the username is not mandatory, filling the password input with `shadow` is enought the retrieve the flag from the server.
+Indeed the username is not mandatory, filling the password input with `shadow` is enough the retrieve the flag from the server.
 
-### Log snippet
+#### Log snippet
 
 ```zsh
 # ...
@@ -133,6 +141,16 @@ __________
 # ...
 ```
 
-## Solution
+## How to exploit the breach
 
-Several solution or good practice exists, such as limiting the amount of request from the same IP or a recaptcha usage on the form.
+From there we could perform any operation we want inside the application, authenticated as the hacked user.
+
+For example for mailBox account we could send emails impersonating the hacked user.
+
+And overall we could even change the user's password depending on the application security rigor.
+
+## How to avoid the breach
+
+Several solution or good practices exist, such as limiting the amount of request from the same IP or adding a recaptcha usage on the form.
+
+[2FA](https://en.wikipedia.org/wiki/Multi-factor_authentication) authentication such a google Authenticator, requesting the user to validate it's identity on one of his other devices.
