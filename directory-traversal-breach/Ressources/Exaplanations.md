@@ -14,7 +14,7 @@ From the website's home page, after pressing the `Sign In` button we're redirect
 
 Depending on how the server handles the params parsing we could pass filename containg absolute paths to other file from the server file system.
 
-A commonly hacked sensitive file is the `/etc/psswd` containing a trace of every computer registered user.
+A commonly hacked sensitive file is the `/etc/passwd` containing a trace of every computer registered user.
 
 [More information on /etc/passwd →](https://www.ibm.com/docs/bg/aix/7.2?topic=passwords-using-etcpasswd-file)
 
@@ -45,7 +45,7 @@ The required file path coudld have infinite number of `..`, this is why we'll ne
 
 ### The script
 
-The following script will download the returned page for any `../etc/psswd` combination until he found within the first script tag the string `flag`. 
+The following script will download the returned page for any `../etc/passwd` combination until he found within the first script tag the string `flag`. 
 
 Note: This script assumes that the server will send back the flag in the first script tag, and even more that the flag will be displayed using the `flag` appelation.
 
