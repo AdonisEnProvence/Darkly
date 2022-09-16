@@ -212,8 +212,8 @@ Hashing using sha256 the `fortytwo` results in `10a16d834f9b1e4068b25c4c46fe0284
 
 ## How to exploit the breach
 
-[See explanation on the document for the other SQL injection breach →](../../search_images_sql_injection/Ressources/Explanations.md)
+[See explanation on the document for the other SQL injection breach →](../../search_images_sql_injection/Ressources/Explanation.md)
 
 ## How to avoid the breach
 
-[See explanation on the document for the other SQL injection breach →](../../search_images_sql_injection/Ressources/Explanations.md)
+[See explanation on the document for the other SQL injection breach →](../../search_images_sql_injection/Ressources/Explanation.md)

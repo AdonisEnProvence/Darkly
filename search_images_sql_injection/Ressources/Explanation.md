@@ -2,9 +2,9 @@
 
 ## How we found the breach
 
-Before reading this breach explanations please have a look to this breach before:
+Before reading this breach explanation please have a look to this breach before:
 
-[SQL injection on members table explanations →](../../sql_injection_members_table/Ressources/Explanations.md)
+[SQL injection on members table explanation →](../../sql_injection_members_table/Ressources/Explanation.md)
 
 The principle is same as for the members SQL breach.
 As in the previous SQL injection we achieved to retrieve the whole database Tables and Columns.
