@@ -12,7 +12,7 @@ Sources:
 
 From the website's home page, after pressing the `Sign In` button we're redirected to `http://IP/?page=signin`.
 
-Depending on how the server handles the params parsing we could pass filename containg absolute paths to other file from the server file system.
+Depending on how the server handles the params parsing we could pass filename containing absolute paths to other file from the server file system.
 
 A commonly hacked sensitive file is the `/etc/passwd` containing a trace of every computer registered user.
 
@@ -37,17 +37,17 @@ By hitting `http://IP/?page=signin` the server returns a page displaying an aler
 		<script 
 ```
 
-We can see that the server append a script tag on the begining of the page.
+We can see that the server append a script tag on the beginning of the page.
 
 We need to dig deeper, considering that the served page could be located recursively anywhere in folders.
 
-The required file path coudld have infinite number of `..`, this is why we'll need to code a small tool.
+The required file path could have infinite number of `..`, this is why we'll need to code a small tool.
 
 ### The script
 
 The following script will download the returned page for any `../etc/passwd` combination until he found within the first script tag the string `flag`. 
 
-Note: This script assumes that the server will send back the flag in the first script tag, and even more that the flag will be displayed using the `flag` appelation.
+Note: This script assumes that the server will send back the flag in the first script tag, and even more that the flag will be displayed using the `flag` appellation.
 
 ```ts
 // @ts-check
@@ -101,6 +101,6 @@ He could also be able to execute previously uploaded script inside the server fi
 
 ## How to avoid the breach
 
-To avoid this breach is kinda the same thing as for the [Redirect securyt breach](../../mocking_referer_and_user_agent_curl_breach/Ressources/Explanations.md). The server should not be passing user-supplied input to the filesystem.
+To avoid this breach is kinda the same thing as for the [Redirect security breach](../../mocking_referer_and_user_agent_curl_breach/Ressources/Explanations.md). The server should not be passing user-supplied input to the filesystem.
 
 Either if it's necessary the server should be validating the input, using a `whitelist` `escaping` the received path.

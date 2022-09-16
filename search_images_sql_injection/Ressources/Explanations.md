@@ -63,7 +63,7 @@ We can see that the last image contains a hash to handle `1928e8083cf461a5130363
 
 #### Retrieving the flag
 
-Via md5 decrypt of `1928e8083cf461a51303633093573c46` containted in the `comment` list_images table column that leads to `albatroz`.
+Via md5 decrypt of `1928e8083cf461a51303633093573c46` contained in the `comment` list_images table column that leads to `albatroz`.
 
 Hashing using sha256 the `albatroz` results in `f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188` which is our flag.
 
@@ -81,7 +81,7 @@ An other solution would be to use an ORM that will natively prevent SQL injectio
 
 You could also define restricted accesses to the connection to the database: restricted access to only a few tables, no deletion permission, no reading permission for critical tables, etc.
 
-### Php Example
+### PHP Example
 
 Unsecured sql querying:
 

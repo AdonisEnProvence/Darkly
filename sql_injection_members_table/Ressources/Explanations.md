@@ -1,4 +1,4 @@
-# Sql injection on members table
+# SQL injection on members table
 
 ## How we found the breach
 
@@ -41,7 +41,7 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
 ```
 
 The server show us the raw MariaDB error, we see that our query has been added to a prebuilt one.
-The prebuild query should look like something:
+The prebuilt query should look like something:
 
 ```sql
 SELECT first_name, surname FROM users WHERE users.id = ${id} 
@@ -91,7 +91,7 @@ source: https://www.sqlinjection.net/column-names/
 
 As a first SQL query is build using our input. By using the UNION SELECT attack we could build a new query over the first one.
 
-We want to discard all results of the first SELECT and only keep those of our own SELECT. For that we make sure the WHERE clause of the first SELECT always evalutes to `FALSE`.
+We want to discard all results of the first SELECT and only keep those of our own SELECT. For that we make sure the WHERE clause of the first SELECT always evaluates to `FALSE`.
 
 Input:
 
@@ -206,7 +206,7 @@ Inside the last user we can find the operations to do to retrieve the flag.
 
 #### Retrieving the flag
 
-Via md5 decrypt of `5ff9d0165b4f92b14994e5c685cdce28` containted in the `countersign` users table column that leads to `FortyTwo`.
+Via md5 decrypt of `5ff9d0165b4f92b14994e5c685cdce28` contained in the `countersign` users table column that leads to `FortyTwo`.
 
 Hashing using sha256 the `fortytwo` results in `10a16d834f9b1e4068b25c4c46fe0284e99e44dceaf08098fc83925ba6310ff5`
 

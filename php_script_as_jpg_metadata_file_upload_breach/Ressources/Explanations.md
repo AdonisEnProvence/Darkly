@@ -4,7 +4,7 @@
 
 Source: https://book.hacktricks.xyz/pentesting-web/file-upload#bypass-content-type-and-magic-number
 
-On the page `http://IP/?page=upload`, we can find a image upload form. After trying uploading differents type of files, we assume that the server only accepts `jpg` format files. We also know that the form uses `multipart/form-data`.
+On the page `http://IP/?page=upload`, we can find a image upload form. After trying uploading different type of files, we assume that the server only accepts `jpg` format files. We also know that the form uses `multipart/form-data`.
 
 ### Bypassing the filename parser
 
@@ -135,7 +135,7 @@ By running this Node.js script we're able to retrieve the flag in the rendered p
       <section id="main" class="wrapper">
          <div class="container" style="margin-top:75px">
             <pre><center><h2 style="margin-top:50px;">The flag is : 46910d9ce35b385885a9f7e2b336249d622f29b267a1771fbacf52133beddba8</h2><br/><img src="images/win.png" alt="" width=200px height=200px></center> </pre>
-            <pre>/tmp/coco.php succesfully uploaded.</pre>
+            <pre>/tmp/coco.php successfully uploaded.</pre>
             <table width=50%>
                <tr style="background-color:transparent;border:none;">
                   <td colspan=2>
@@ -218,7 +218,7 @@ By uploading a very large file we may make the server crash and cause a denial o
 
 The server should never trust data sent by clients, as they can be completely customized by anyone.
 
-There's a lot of native solutions to securily verify the true content type of an input file, such as [imagetype](https://www.php.net/manual/fr/function.exif-imagetype.php) or [finfo](https://www.php.net/manual/fr/function.finfo-file.php). The content type received from the client should never be trust.
+There's a lot of native solutions to securely verify the true content type of an input file, such as [imagetype](https://www.php.net/manual/fr/function.exif-imagetype.php) or [finfo](https://www.php.net/manual/fr/function.finfo-file.php). The content type received from the client should never be trust.
 
 The type of files should be strictly restricted. If a file does not have an authorized type, it should be rejected.
 

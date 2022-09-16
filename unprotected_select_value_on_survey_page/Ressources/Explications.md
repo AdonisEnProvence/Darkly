@@ -1,4 +1,4 @@
-# Unprotectd select value on survey page
+# Unprotected select value on survey page
 
 ## How we found the page
 
