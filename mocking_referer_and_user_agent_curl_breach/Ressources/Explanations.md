@@ -49,9 +49,20 @@ There we go ! In the returned page we can find the flag !
 
 ## How to exploit the breach
 
-If the server makes assertions on the headers of the request, then depending on the resulting operations can be really risky if any transaction or authentication is involved.
+If the server makes assertions on the headers of the request, it should never be, then depending on the resulting operations can be really risky if any transaction or authentication is involved.
+
+One more realistic hack is to send requests – with curl – to a website with a crazy `Referer` header. This header is monitored by websites to know where their users come from. A hacker may corrupt the statistics, which could mislead business decisions.
+
+More information about how analytics service do to determine where users come from:
+
+- https://plausible.io/docs/top-referrers
+- https://plausible.io/blog/referrer-policy
+- https://www.optimizesmart.com/geek-guide-removing-referrer-spam-google-analytics/
+- https://kinsta.com/blog/google-analytics-spam/
 
 ## How to avoid the breach
 
 As for everything that builds a request, specfic headers can be set manually by an hacker.
 To avoid such security issue, the server should not be making high risky assertion depending on the request's header.
+
+To protect your analytics depending on what service you use you could either establish `regex` that would allow human readable referrer only or a blacklist forbidding known `Ghost Traffic` referrers.
