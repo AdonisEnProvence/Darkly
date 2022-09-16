@@ -33,7 +33,7 @@ To avoid this kind of breach the server needs to verify the given query.
 
 Using a domain `whitelist`, this can be dangerous as whitelisted website can still have security issues.
 
-Javascript bad domain whitelist implementation:
+JavaScript bad domain whitelist implementation:
 
 ```js
 const whiteListedDomainCollection = [

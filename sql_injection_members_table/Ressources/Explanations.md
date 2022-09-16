@@ -1,4 +1,4 @@
-# Sql injection on members table
+# SQL injection on members table
 
 ## How we found the breach
 

@@ -81,7 +81,7 @@ An other solution would be to use an ORM that will natively prevent SQL injectio
 
 You could also define restricted accesses to the connection to the database: restricted access to only a few tables, no deletion permission, no reading permission for critical tables, etc.
 
-### Php Example
+### PHP Example
 
 Unsecured sql querying:
 
