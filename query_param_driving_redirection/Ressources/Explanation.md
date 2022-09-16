@@ -21,7 +21,7 @@ We were not redirected to Google website, but we had found a flag!
 If someone wanna impersonate the service, he could send a link in a phishing mail as `http:/IP/index.php?page=redirect&site=<EVIL_WEBSITE>`
 This link redirection could look legit to the user that would click on it, being redirected to the evil site that perfectly reproduces the source website.
 
-The user being confident about the authenticity of the website could enter his personal information, that would in fact be sent to the hacker, hacker that could even log in the user by sniffing the information and redirecting the user to the authentic website afterall.
+The user being confident about the authenticity of the website could enter his personal information, that would in fact be sent to the hacker, hacker that could even log in the user by sniffing the information and redirecting the user to the authentic website after all.
 
 The user wouldn't even notify that he has been hacked.
 

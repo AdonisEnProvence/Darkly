@@ -62,7 +62,7 @@ More information about how analytics service do to determine where users come fr
 
 ## How to avoid the breach
 
-As for everything that builds a request, specfic headers can be set manually by an hacker.
+As for everything that builds a request, specific headers can be set manually by an hacker.
 To avoid such security issue, the server should not be making high risky assertion depending on the request's header.
 
 To protect your analytics depending on what service you use you could either establish `regex` that would allow human readable referrer only or a blacklist forbidding known `Ghost Traffic` referrers.

