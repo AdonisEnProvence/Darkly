@@ -1,6 +1,6 @@
 # Unprotected select value on survey page
 
-## How we found the page
+## How we found the breach
 
 On the page `http://192.168.56.101/?page=survey`, can be found a survey select form. Here's what a `<select />` element does look like:
 
@@ -28,11 +28,11 @@ When updating the value of the option of a select for a bigger one (e.g. 1000000
 
 The server seems not to be verifying the possible select value. Then we could either send any kind of data trying to run some code or sql injections.
 
-Overall in this specific case we could just hack the survey score entering a custom value highly decreasing or increasing the survey mark. 
+Overall in this specific case we could just hack the survey score entering a custom value highly decreasing or increasing the survey mark.
 
 ## How to avoid the breach
 
-Submitted values must be validated server-side as they can not be assumed to be valid. 
+Submitted values must be validated server-side as they can not be assumed to be valid.
 
 It's easy to change the value of an option with developers tools in the browser, and requests can also be made from outside the navigator, and their body can then be totally modified.
 
