@@ -55,7 +55,7 @@ Here's a part of the HTML code of the page after we inserted our malicious code:
 
 But... no flag is returned by the server.
 
-After a lot of attempts, it turns out that we just have to fill one of the input with `script` for the server to return the flag.
+After a lot of attempts, it turns out that we just have to fill one of the inputs with `script` for the server to return the flag.
 
 ## How to exploit the breach
 
