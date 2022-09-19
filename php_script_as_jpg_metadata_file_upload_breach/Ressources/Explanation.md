@@ -59,7 +59,7 @@ Upload
 Either from the HTML form fields or from the request body, we can find the `form-data` entries:
 
 - `uploaded` (contains the file)
-- `MAX_FILE_SIZE` (the maximum size of the file; either not safe as can be changed)
+- `MAX_FILE_SIZE` (the maximum size of the file; not safe neither, as can be changed)
 - `Upload` (the value of the submit button)
 
 The next step is to manually create the same `form-data` with a custom `content-type` equal to `image/jpeg` but in reality would contain an evil script.
