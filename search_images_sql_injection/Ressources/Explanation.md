@@ -6,9 +6,7 @@ Before reading this breach explanation please have a look to this breach before:
 
 [SQL injection on members table explanation →](../../sql_injection_members_table/Ressources/Explanation.md)
 
-The principle is same as for the members SQL breach.
-As in the previous SQL injection we achieved to retrieve the whole database Tables and Columns.
-Images table is not spared:
+The principle is the same as for the members SQL breach. As in the previous SQL injection we achieved to retrieve the whole database tables and columns. `list_images` table is not spared:
 
 ```sql
 ID: 1 AND 1=2 UNION SELECT table_name, column_name FROM information_schema.columns 
@@ -26,6 +24,7 @@ Surname : comment
 ```
 
 `list_images` table has 4 columns:
+
 - id
 - url
 - title
@@ -63,13 +62,13 @@ We can see that the last image contains a hash to handle `1928e8083cf461a5130363
 
 #### Retrieving the flag
 
-Via md5 decrypt of `1928e8083cf461a51303633093573c46` contained in the `comment` list_images table column that leads to `albatroz`.
+Via md5 decrypt of `1928e8083cf461a51303633093573c46` string, contained in the `comment` column of `list_images` table, we get the original plain text: `albatroz`.
 
-Hashing using sha256 the `albatroz` results in `f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188` which is our flag.
+Hashing `albatroz` with sha256 algorithm gives us the flag: `f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188`.
 
 ## How to exploit the breach
 
-Having a SQL injection breach can lead to be leaking the whole database entries, involving users' personal information, emails, password, etc. 
+Having a SQL injection breach can lead to leaking the whole database entries, involving users' personal information, emails, password, etc. 
 
 But not only about stealing data, a hacker could even insert entries in a specific table, for example to add credits to his account. A hacker could even delete all the entries of a table – let's hope you made regular backups of your database.
 
