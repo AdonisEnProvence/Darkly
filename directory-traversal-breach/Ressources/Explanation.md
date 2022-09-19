@@ -12,7 +12,7 @@ Sources:
 
 From the website's home page, after pressing the `Sign In` button we're redirected to `http://IP/?page=signin`.
 
-Depending on how the server handles the params parsing we could pass filename containing absolute paths to other file from the server file system.
+Depending on how the server handles the params parsing we could pass any filename containing absolute paths to other file from the server file system.
 
 A commonly hacked sensitive file is the `/etc/passwd` containing a trace of every computer registered user.
 

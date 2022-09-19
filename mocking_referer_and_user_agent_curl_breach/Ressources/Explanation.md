@@ -2,7 +2,7 @@
 
 ## How we found the breach
 
-After inspecting the page: `http://192.168.56.101/?page=b7e44c7a40c5f80139f0a50f3650fb2bd8d00b0d24667c4c2ca32c88e13b758f` several suspicious html comments can be found inside it.
+After inspecting the page: `http://192.168.56.101/?page=b7e44c7a40c5f80139f0a50f3650fb2bd8d00b0d24667c4c2ca32c88e13b758f` several suspicious html comments can be found.
 
 ```html
 <!--
@@ -19,7 +19,7 @@ The first one suggests that we're coming from a specific url, well then lets jus
 ## Custom curl Referrer header
 
 We will use `curl` to perform our requests, using `curl --header "Header_foo: bar"` we can define custom header key value pairs.
-Also we will make a diff on the fly of the default page versus our custom curl.
+Also we will make a diff between the default page and our custom curl result.
 First the `Referrer` header using `curl --header "Referer: https://www.nsa.gov/" url`.
 
 ```bash

@@ -13,7 +13,7 @@ This input is within a recover password form. Here we can find the admin email, 
 
 ## How to exploit the breach
 
-By changing the HTML element value attribute by an email address we have access to, we could intercept the recovering password request email. Now we also know what is the email address of the webmaster!
+By replacing the HTML element attribute's value with an email address we have access to, we could intercept the recovering password request email. Now we also know what is the email address of the webmaster!
 
 ## How to avoid the breach:
 

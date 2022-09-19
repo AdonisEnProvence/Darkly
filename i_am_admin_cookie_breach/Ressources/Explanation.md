@@ -10,9 +10,9 @@ Where we can found:
 I_am_admin	68934a3e9455fa72420237eb05902327
 ```
 
-By googling `68934a3e9455fa72420237eb05902327` it results as the md5 hashed of `false`. Then by hashing `true` we get `b326b5062b2f0e69046810717534cb09`. Thanks to your browser devtool we change the cookie value by the hashed `true` and refresh.
+By googling `68934a3e9455fa72420237eb05902327` it results as the md5 hashed of `false`. Then by hashing `true` we get `b326b5062b2f0e69046810717534cb09`. Thanks to our browser devtool we're able to change the cookie's value by the md5 hash of `true`.
 
-There we go the website renders an alert modal containing a flag.
+After refreshing, there we go the website renders an alert modal containing a flag.
 
 ## How to exploit the breach
 
@@ -48,7 +48,7 @@ Set-Cookie: products=[1,2,3].<signature>
 
 ### The Encrypted cookie
 
-Second, the content of the cookie can be *encrypted*, using a secret key. When the cookie is created, its value is first encrypted using a key, and then put in the cookie. When the cookie is read, the content is first decrypted by using the same key. Sensitive information can now be stored in the cookie as they are no longer stored in plain text: the private key is needed to read the content.
+Second, the content of the cookie can be *encrypted*, using a secret key. When the cookie is created, its value is first encrypted using a key, and then put in the cookie. When the cookie is read, the content is first decrypted by using the same key. Sensitive information can now be stored in the cookie as they are no longer stored in plain text: the private key is required to read the content.
 
 ```txt
 Set-Cookie: products=AYjA/rwOiMhnaQzzqg33yAHzn7m6JOqBDOTUylpxGrqO9Q+bvExCapX1IyHmZunWzJKCcJDvSeHuKFhSnaZhhUn4A2M1K6jERXRQF2FhIlGpPwTQJlk1tgxGCHd7jBmzrEZbrqDopwdxx+gPXi9AR36vBablJWWerc7UNC4Nr54=
@@ -56,7 +56,7 @@ Set-Cookie: products=AYjA/rwOiMhnaQzzqg33yAHzn7m6JOqBDOTUylpxGrqO9Q+bvExCapX1IyH
 
 ### HttpOnly attribute
 
-Using `HttpOnly` attribute will prevent `JavaScript` access to the cookie, as for example during an XSS attack. Only server can read and modify the cookie.
+Using `HttpOnly` attribute will prevent `JavaScript` script to access the cookie, as for example during an XSS attack. Only the server can read and modify the cookie.
 
 ```txt
 Set-Cookie: products=[1,2,3]; HttpOnly
