@@ -6,7 +6,7 @@ From the page `http://IP/?page=member`, where we can find a members search engin
 
 ### Legit search
 
-First of all trying searching for a userID of `1` results:
+First of all we try to find a user with a `userID` equal to `1`:
 
 Input:
 
@@ -22,7 +22,7 @@ First name: one
 Surname : me
 ```
 
-We can see that the server returns two user fields.
+We can see that the server returns two fields for the user.
 
 ### Simple SQL injection attempt
 
@@ -40,8 +40,7 @@ Output:
 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT * FROM users' at line 1
 ```
 
-The server show us the raw MariaDB error, we see that our query has been added to a prebuilt one.
-The prebuilt query should look like something:
+The server shows us the raw MariaDB error, and we can see that our query has been added to a prebuilt one. We think that the prebuilt query should be something like this:
 
 ```sql
 SELECT first_name, surname FROM users WHERE users.id = ${id} 
@@ -49,7 +48,7 @@ SELECT first_name, surname FROM users WHERE users.id = ${id}
 
 ### Condition injection
 
-To be able to retrieve to whole users table entry we need to create a SQL query that has a WHERE clause always evaluating to `TRUE`. We achieve this result by adding a `OR TRUE` condition.
+To be able to retrieve all the entries of `users` table, we need to create a SQL query that has a `WHERE` clause always evaluating to `TRUE`. We achieve this result by adding a `OR TRUE` condition:
 
 Input:
 
@@ -57,7 +56,7 @@ Input:
 1 OR TRUE
 ```
 
-Resulting on the server as:
+Resulting on the server as a query like this:
 
 ```sql
 SELECT first_name, surname FROM users WHERE users.id = 1 OR TRUE
@@ -83,13 +82,13 @@ First name: Flag
 Surname : GetThe
 ```
 
-There are four users in the users table. The last one looks quite suspicious.
+There are four users in the `users` table. The last one looks quite suspicious.
 
 ### UNION SELECT SQL injection
 
 source: https://www.sqlinjection.net/column-names/
 
-As a first SQL query is build using our input. By using the UNION SELECT attack we could build a new query over the first one.
+As we could build a custom SQL query from our own input, by using the UNION SELECT attack we can build a new query over the first one and change its behavior completely.
 
 We want to discard all results of the first SELECT and only keep those of our own SELECT. For that we make sure the WHERE clause of the first SELECT always evaluates to `FALSE`.
 
@@ -102,15 +101,17 @@ Input:
 As a serial integer is never negative, no user can have an id that is `-1`.
 
 Output:
+
 ```sql
 The used SELECT statements have a different number of columns
 ```
 
-The problem there is that our second `UNION SELECT` query returns more than the initial sql query, that returned 2 columns, due to selecting all fields with `*`.
+The problem there is that our second `UNION SELECT` query returns more columns than the initial sql query, that returned 2 columns, due to selecting all fields with `*`.
 
 ### Finding all tables columns name
 
-Our goal is to retrieve all the `users` table columns names to be able to gather them using the `UNION SELECT` injection.
+Our goal is to retrieve the name of all columns of the `users` table, to be able to select which of them we want to query with the `UNION SELECT` injection.
+
 To do so we will be using the default database `information_schema.columns` information.
 
 Input:
@@ -174,7 +175,7 @@ We have retrieved the whole database tables and columns name, focusing on the us
 
 source: https://makitweb.com/how-to-concatenate-multiple-columns-in-mysql/
 
-What we want now is to retrieve all the users entry columns value within on column, as the initial query returns only 2 columns.
+What we want now is to retrieve the value of all the columns for each user, concatenated inside a single column, as the initial query can return at most 2 columns.
 
 Input:
 
@@ -206,7 +207,7 @@ Inside the last user we can find the operations to do to retrieve the flag.
 
 #### Retrieving the flag
 
-Via md5 decrypt of `5ff9d0165b4f92b14994e5c685cdce28` contained in the `countersign` users table column that leads to `FortyTwo`.
+Via md5 decrypt of `5ff9d0165b4f92b14994e5c685cdce28` string, contained in the `countersign` users table column, we get `FortyTwo`.
 
 Hashing using sha256 the `fortytwo` results in `10a16d834f9b1e4068b25c4c46fe0284e99e44dceaf08098fc83925ba6310ff5`
 
