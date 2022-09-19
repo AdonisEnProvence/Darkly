@@ -4,7 +4,7 @@
 
 Before reading this breach explanation please have a look to this breach before:
 
-[SQL injection on members table explanation →](../../sql_injection_members_table/Ressources/Explanation.md)
+[SQL injection on members table explanation →](../../sql_injection_members_table/Ressources/README.md)
 
 The principle is the same as for the members SQL breach. As in the previous SQL injection we achieved to retrieve the whole database tables and columns. `list_images` table is not spared:
 

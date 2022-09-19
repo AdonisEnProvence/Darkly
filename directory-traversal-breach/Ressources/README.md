@@ -104,10 +104,10 @@ From the output we can see that passing the query `../../../../../../../etc/pass
 
 By being able to browse the server file system the hacker could steal any kind of sensitive information. He could also be able to execute previously uploaded script inside the server file tree.
 
-[See file upload breach →](../../php_script_as_jpg_metadata_file_upload_breach/Ressources/Explanation.md)
+[See file upload breach →](../../php_script_as_jpg_metadata_file_upload_breach/Ressources/README.md)
 
 ## How to avoid the breach
 
-The solutions to avoid this breach are quite similar to those for [Redirect security breach](../../query_param_driving_redirection/Ressources/Explanation.md). The server should not build a path to local filesystem with user-supplied input.
+The solutions to avoid this breach are quite similar to those for [Redirect security breach](../../query_param_driving_redirection/Ressources/README.md). The server should not build a path to local filesystem with user-supplied input.
 
 If it's necessary for the application to allow users to access files on the filesystem of the server, the server should validate the path sent by the user, to only allow access to authorized directories.

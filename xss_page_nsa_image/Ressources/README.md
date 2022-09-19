@@ -24,8 +24,8 @@ If this time we use the base64 encoded HTML code, it works! (<http://192.168.56.
 
 ## How to exploit the breach
 
-[See explanation on the document for the other XSS breach →](../../xss_on_feedbacks_page_breach/Ressources/Explanation.md)
+[See explanation on the document for the other XSS breach →](../../xss_on_feedbacks_page_breach/Ressources/README.md)
 
 ## How to avoid the breach:
 
-[See explanation on the document for the other XSS breach →](../../xss_on_feedbacks_page_breach/Ressources/Explanation.md)
+[See explanation on the document for the other XSS breach →](../../xss_on_feedbacks_page_breach/Ressources/README.md)
