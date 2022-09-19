@@ -8,7 +8,7 @@ After hacking into the server database we found several user's usernames in data
 
 To see how we've scanned the data please look at:
 
-[SQL injection on members table explanation →](../../sql_injection_members_table/Ressources/Explanation.md)
+[SQL injection on members table explanation →](../../sql_injection_members_table/Ressources/README.md)
 
 ```js
 // Only surname
