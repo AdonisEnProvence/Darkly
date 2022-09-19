@@ -1,4 +1,4 @@
-# Scrapping .hidden folder file tree
+# Scraping .hidden folder file tree
 
 ## How we found the breach
 
@@ -50,4 +50,4 @@ Depending on the Nginx configuration, the scrapper could have access to any fold
 
 ## How to avoid the breach
 
-To prevent this breach a strong a secured Nginx config would avoid any hacker to browse in the server file system.
+A strong and secure Nginx configuration would avoid any hacker to browse the server file system.
